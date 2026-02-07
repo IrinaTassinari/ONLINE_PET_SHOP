@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap; 
+    /* font-display: swap; не оставляет элемент пустым */
+    /* @font-face подтягивает шрифт  - это директива*/
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap; 
+}

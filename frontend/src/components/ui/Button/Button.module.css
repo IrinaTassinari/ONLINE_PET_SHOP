@@ -1,0 +1,38 @@
+.btnBlue{
+    border: none;
+    border-radius: 6px;
+    background-color: #0d50ff;
+    color: #fff;
+    padding: 16px 56px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    text-align: center;
+    max-width: 284px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.btnBlue:hover{
+    background-color: #282828;
+}
+.btnBlue:active {
+  transform: translateY(1px);
+}
+.btnBlue:focus-visible {
+  outline: 3px solid rgba(13, 80, 255, 0.4);
+  outline-offset: 2px;
+}
+@media(max-width: 930px){
+  .btnBlue{
+    font-size: 14px;
+    max-width: 200px;
+    padding: 14px 36px;
+  }
+}
+@media(max-width: 640px){
+  .btnBlue{
+    font-size: 14px;
+    max-width: 200px;
+    padding: 10px 26px;
+  }
+}

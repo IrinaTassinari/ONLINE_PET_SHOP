@@ -1,0 +1,17 @@
+:root{
+  --fwbold: 700;
+  --fwmedium: 500;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+body{
+  background-color: #fff;
+}
+.container{
+  margin: 0 40px;
+}
+/* {`${URL}${category.id}`} это к примеру но как-то так все тянется, только вместо id тянем все что нужно */
