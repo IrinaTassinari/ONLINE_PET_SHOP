@@ -1,0 +1,86 @@
+.discountForm {
+  width: 100%;
+  max-width: 716px;
+  margin-bottom: 32px;
+}
+
+.inputD {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 130%;
+  padding: 16px 32px;
+}
+
+.inputD::placeholder {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.inputD:hover,
+.inputD:focus {
+  box-shadow: none;
+}
+
+.discountForm :global(.ant-form-item-explain-error) {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ff4d4f; 
+   line-height: 130%;
+   padding: 5px 0;
+}
+.buttonD {
+  width: 100%;
+  height: 58px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #282828;
+  line-height: 130%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.buttonD:hover {
+  background: #ffffff !important;
+  color: #282828 !important;
+}
+
+@media (max-width: 1100px) {
+  .inputD,
+  .buttonD {
+    height: 52px;
+  }
+  .inputD {
+    font-size: 20px;
+  }
+  .buttonD {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .discountForm {
+    max-width: 100%;
+  }
+  .inputD,
+  .buttonD {
+    height: 48px;
+  }
+  .inputD {
+    font-size: 18px;
+    padding: 0 16px;
+  }
+  .buttonD {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,91 @@
+.discountBannerBox{
+    background: linear-gradient(220deg, #2451c6 0%, #0d50ff 100%);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.discountTitle{
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 110%;
+    text-align: center;
+    color: #fff;
+    padding: 32px 0 24px;
+}
+.imgAndForm{
+    padding: 0 32px;
+    display: flex;
+    /* align-items: center; */
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+}
+@media (max-width: 1650px) {
+  .imgAndForm{
+    gap: 0px;
+  }
+}
+@media (max-width: 1420px) {
+  .discountImage{
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 1220px) {
+  .discountTitle {
+    font-size: 48px;
+  }
+  .discountImage{
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 1110px) {
+   .imgAndForm {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+   .discountImage{
+    max-width: 690px;
+  }
+}
+
+@media (max-width: 890px) {
+  .discountTitle {
+    font-size: 36px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .discountTitle {
+    font-size: 34px;
+  }
+.discountImage{
+    max-width: 450px;
+  }
+}
+ 
+@media (max-width: 560px) {
+  .discountTitle {
+    font-size: 32px;
+  }
+.discountImage{
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 560px) {
+  .discountTitle {
+    text-wrap: wrap;
+    padding: 15px;
+  }
+.discountImage{
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 456px) {
+.discountImage{
+    max-width: 250px;
+  }
+}

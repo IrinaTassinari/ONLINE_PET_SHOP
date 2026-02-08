@@ -1,0 +1,152 @@
+.contactsTitle {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 110%;
+  color: #282828;
+  margin-bottom: 40px;
+}
+
+.phoneAndSocials,
+.addressAndHours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.phoneBox,
+.socialsBox,
+.addressBox,
+.hoursBox {
+  background-color: #f1f3f4;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  min-width: 0;
+}
+/* min-width: 0 важно для grid/flex: по умолчанию элемент может не сжиматься из-за длинного контента. min-width: 0 разрешает ему сжиматься внутри колонки, чтобы не было “выпирания”. */
+
+.phoneBox p,
+.socialsBox p,
+.addressBox p,
+.hoursBox p {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+  color: #8b8b8b;
+  margin-bottom: 16px;
+}
+
+.phoneBox h4,
+.addressBox h4,
+.hoursBox h4 {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 110%;
+  color: #282828;
+  overflow-wrap: anywhere;
+}
+
+.socialsCont{
+    display: flex;
+    gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .phoneAndSocials,
+  .addressAndHours {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .phoneBox,
+  .socialsBox,
+  .addressBox,
+  .hoursBox {
+    padding: 24px;
+  }
+
+  .phoneBox h4,
+  .addressBox h4,
+  .hoursBox h4 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phoneAndSocials,
+  .addressAndHours {
+    grid-template-columns: 1fr;
+  }
+
+  .contactsTitle {
+    font-size: 44px;
+  }
+
+  .phoneBox h4,
+  .addressBox h4,
+  .hoursBox h4 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 450px) {
+   .socialIcon{
+    max-width: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .contactsTitle {
+    font-size: 32px;
+  }
+
+  .phoneBox h4,
+  .addressBox h4,
+  .hoursBox h4 {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
