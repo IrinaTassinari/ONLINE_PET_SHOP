@@ -4,12 +4,14 @@ import AllCategoriesPage from "./pages/AllCategoriesPage/AllCategoriesPage";
 import AllProductsPage from './pages/AllProductsPage/AllProductsPage'
 import AllSalesPage from './pages/AllSalesPage/AllSalesPage'
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage'
+import SpecialCategoryPage from "./pages/SpecialCategoryPage/SpecialCategoryPage";
 
 function AppRoutes() {
   return (
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/categories" element={<AllCategoriesPage/>} />
+        <Route path="/categories/:id" element={<SpecialCategoryPage />} />
         <Route path="/products" element={<AllProductsPage/>}/>
         <Route path="/sales" element={<AllSalesPage/>}/>
         <Route path="/cart" element={<ShoppingCartPage/>}/>

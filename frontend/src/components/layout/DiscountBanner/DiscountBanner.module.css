@@ -3,6 +3,9 @@
     border-radius: 12px;
     overflow: hidden;
 }
+.discountImage{
+    max-width: 1150px;
+  }
 .discountTitle{
     font-weight: 700;
     font-size: 64px;
@@ -14,19 +17,27 @@
 .imgAndForm{
     padding: 0 32px;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     align-items: flex-end;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 32px;
 }
 @media (max-width: 1650px) {
   .imgAndForm{
     gap: 0px;
   }
+  .discountImage{
+    max-width: 850px;
+  }
 }
-@media (max-width: 1420px) {
+@media (max-width: 1470px) {
   .discountImage{
     max-width: 650px;
+  }
+}
+@media (max-width: 1300px) {
+  .discountImage{
+    max-width: 550px;
   }
 }
 
