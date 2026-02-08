@@ -13,7 +13,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className={style.headerTop}>
       <div className="container">
         <div className={style.headerContainer}>
           {/* Desktop */}

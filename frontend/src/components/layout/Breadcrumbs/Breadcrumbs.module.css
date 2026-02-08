@@ -1,0 +1,48 @@
+.breadcrumbs {
+  --crumb-gap: clamp(8px, 2vw, 16px);
+  display: flex;
+  align-items: center;
+  gap: var(--crumb-gap);
+  padding: 40px 0;
+}
+
+.crumb {
+  padding: 8px 16px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 126%;
+  color: #8b8b8b;
+  text-decoration: none;
+  position: relative;
+}
+
+.crumb:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + (var(--crumb-gap) - 16px) / 2);
+  width: 17px;
+  height: 1px;
+  background: #ddd;
+  transform: translateY(-50%);
+}
+
+.crumbActive {
+  color: #282828;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    padding: 30px 0;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .crumb::after { display: none; }
+}
+

@@ -72,7 +72,7 @@ function FormAntd() {
         <Input placeholder="Email" className={styles.inputD} />
       </Form.Item>
 
-      <Button htmlType="submit" block className={styles.buttonD}>
+      <Button htmlType="submit" block id='buttonD' className={styles.buttonD}>
         Get a discount
       </Button>
     </Form>

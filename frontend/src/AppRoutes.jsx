@@ -5,6 +5,7 @@ import AllProductsPage from './pages/AllProductsPage/AllProductsPage'
 import AllSalesPage from './pages/AllSalesPage/AllSalesPage'
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage'
 import SpecialCategoryPage from "./pages/SpecialCategoryPage/SpecialCategoryPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
         <Route path="/products" element={<AllProductsPage/>}/>
         <Route path="/sales" element={<AllSalesPage/>}/>
         <Route path="/cart" element={<ShoppingCartPage/>}/>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
   );
 }

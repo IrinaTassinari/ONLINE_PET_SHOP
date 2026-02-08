@@ -1,3 +1,6 @@
+.headerTop{
+  border-bottom: 1px solid #ddd;
+}
 .headerContainer {
   padding: 30px 0 28px;
 }
