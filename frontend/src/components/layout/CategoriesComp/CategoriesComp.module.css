@@ -5,12 +5,14 @@
   justify-content: space-between;
   gap: 32px;
 }
+
 .titleCategories {
   font-weight: 700;
   font-size: 64px;
   line-height: 110%;
   color: #282828;
 }
+
 .headerLine {
   flex: 1;
   height: 1px;
@@ -50,8 +52,7 @@
   text-decoration: none;
   border-radius: 12px;
   padding: 10px;
-
-  /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .categoryCard img {

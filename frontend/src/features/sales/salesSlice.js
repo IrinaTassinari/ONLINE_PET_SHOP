@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts } from "./productsThunks";
+import { fetchSales } from "./salesThunks";
 
 const initialState = {
   list: [],
@@ -7,25 +7,25 @@ const initialState = {
   listError: null,
 };
 
-const productsSlice = createSlice({
-  name: "products",
+const salesSlice = createSlice({
+  name: "sales",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(fetchSales.pending, (state) => {
         state.listStatus = "loading";
         state.listError = null;
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchSales.fulfilled, (state, action) => {
         state.listStatus = "succeeded";
         state.list = action.payload;
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(fetchSales.rejected, (state, action) => {
         state.listStatus = "failed";
         state.listError = action.error.message;
       });
   },
 });
 
-export default productsSlice.reducer;
+export default salesSlice.reducer;

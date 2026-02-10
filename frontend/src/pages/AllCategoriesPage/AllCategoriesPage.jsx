@@ -15,8 +15,7 @@ function AllCategoriesPage() {
   // list — массив категорий.
   // listStatus — статус загрузки (idle/loading/succeeded/failed).
 
-  const { list, listStatus } = useSelector((s) => s.categories);
-
+  const { list, listStatus, listError } = useSelector((state) => state.categories);
 
   //При первом рендере, если статус idle, вызывается dispatch(fetchCategories())
   //Это делает запрос на /categories/all через thunk
@@ -26,25 +25,34 @@ function AllCategoriesPage() {
 
   return (
     <section className={`container ${style.wrapperAllCategories}`}>
-         <Breadcrumbs/>
+      <Breadcrumbs />
+
       <div className={style.categoriesHeader}>
-        <h2 className={style.titleCategories}>Categories</h2>
+        <h1 className={style.titleCategories}>Categories</h1>
       </div>
 
-      <div className={style.categoriesList}>
-        {list.map((category) => (
-          <Link key={category.id} to={`/categories/${category.id}`} className={style.categoryCard}>
-            <img src={`${API_URL}/${category.image}`} alt={category.title} />
-            <p className={style.categoryName}>{category.title}</p>
-          </Link>
-        ))}
-      </div>
+      {listStatus === "loading" && <p>Loading...</p>}
+      {listStatus === "failed" && <p>{listError || "Error loading categories"}</p>}
+
+      {listStatus === "succeeded" && (
+        <div className={style.categoriesList}>
+          {list.map((category) => (
+            <Link
+              key={category.id}
+              to={`/categories/${category.id}`}
+              className={style.categoryCard}
+            >
+              <img src={`${API_URL}/${category.image}`} alt={category.title} />
+              <p className={style.categoryName}>{category.title}</p>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
+
 export default AllCategoriesPage;
-
-
 
 
 

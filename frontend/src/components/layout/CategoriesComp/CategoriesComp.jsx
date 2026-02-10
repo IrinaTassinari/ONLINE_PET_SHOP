@@ -13,8 +13,9 @@ function CategoriesComp() {
   // list — массив категорий.
   // listStatus — статус загрузки (idle/loading/succeeded/failed).
 
-  const { list, listStatus } = useSelector((s) => s.categories);
+  const { list, listStatus } = useSelector((state) => state.categories);
 
+  const productsFour = list.slice(0,4)
 
   //При первом рендере, если статус idle, вызывается dispatch(fetchCategories())
   //Это делает запрос на /categories/all через thunk
@@ -30,15 +31,28 @@ function CategoriesComp() {
         <Link className={style.linkToAllCateg} to="/categories">All categories</Link>
       </div>
 
-      <div className={style.categoriesList}>
-        {list.slice(0, 4).map((category) => (
-          <Link key={category.id} to={`/categories/${category.id}`} className={style.categoryCard}>
-            <img src={`${API_URL}/${category.image}`} alt={category.title} />
-            <p className={style.categoryName}>{category.title}</p>
-          </Link>
-        ))}
-      </div>
+      {listStatus === "loading" && <p>Loading...</p>}
+      {listStatus === "failed" && (
+        <p>{listError || "Error loading categories"}</p>
+      )}
+
+
+{listStatus === "succeeded" && (
+        <div className={style.categoriesList}>
+          {productsFour.map((category) => (
+            <Link
+              key={category.id}
+              to={`/categories/${category.id}`}
+              className={style.categoryCard}
+            >
+              <img src={`${API_URL}/${category.image}`} alt={category.title} />
+              <p className={style.categoryName}>{category.title}</p>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
+
 export default CategoriesComp;

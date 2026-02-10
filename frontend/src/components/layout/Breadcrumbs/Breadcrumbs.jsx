@@ -1,7 +1,7 @@
 // Импортируем Link для навигации,
 // useLocation - чтобы получить текущий URL,
 // useParams - чтобы получить параметры маршрута (например id)
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation,useParams } from "react-router-dom";
 
 // useSelector нужен для получения данных из Redux store
 import { useSelector } from "react-redux";
@@ -27,9 +27,10 @@ function Breadcrumbs() {
 
   // Текущий товар (используется на странице товара)
   // Нужен, чтобы по id товара показать его название
-  // const currentProduct = useSelector(state => state.products.current);
-  //  или так const currentProduct = useSelector(state => state.products?.current ?? null);
+  //const currentProduct = useSelector(state => state.products.current);
+  const currentProduct = useSelector((state) => state.products?.current ?? null);
 
+  
   // Берём текущий pathname и разбиваем его на части
   // "/categories/3" -> ["categories", "3"]
   // filter(Boolean) убирает пустые строки
@@ -44,6 +45,7 @@ function Breadcrumbs() {
     // возвращаем человекочитаемый текст
     if (segment === "categories") return "Categories";
     if (segment === "products") return "Products";
+    if (segment === "sales") return "Sales";
 
     // Если сегмент - это id категории
     // и категории уже загружены из backend

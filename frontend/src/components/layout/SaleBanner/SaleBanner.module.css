@@ -1,20 +1,55 @@
-.title {
-  margin-bottom:  40px;
+.saleHeader {
+  margin: 80px 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.titleSale {
   font-weight: 700;
   font-size: 64px;
   line-height: 110%;
   color: #282828;
 }
 
-.salesGrid {
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.linkToAllSales {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 126%;
+  text-align: center;
+  color: #8b8b8b;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.linkToAllSales:hover {
+  transform: translateY(-1px);
+  background-color: rgba(13, 80, 255, 0.1);
+  color: #0d50ff;
+}
+
+.saleGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 106px;
 }
 
 .card {
-  text-decoration: none;
+    text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
@@ -34,14 +69,12 @@
 }
 
 .image {
-     width: 100%;
+  width: 100%;
   border-radius: 12px;
   display: block;
 
-   /* width: 100%;
-  height: 284px;
-  object-fit: cover;
-  display: block; */
+  /* height: 284px;
+  object-fit: cover; */
 }
 
 .badge {
@@ -57,8 +90,8 @@
   color: #fff;
 }
 
-.productTitle {
-  margin: 16px 16px 0;
+.title {
+  margin: 20px 32px 16px 32px;
   font-weight: 500;
   font-size: 20px;
   line-height: 130%;
@@ -69,14 +102,14 @@
 }
 
 .priceRow {
-  margin: 16px;
+  margin: 0 32px 32px 32px;
   display: flex;
   align-items: baseline;
   gap: 16px;
 }
 
 .newPrice {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 40px;
   line-height: 110%;
   color: #282828;
@@ -91,35 +124,58 @@
 }
 
 @media (max-width: 1200px) {
-  .salesGrid {
+  .saleGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .title {
+  .titleSale {
     font-size: 44px;
-    margin: 24px 0;
   }
 
-  .salesGrid {
+  .saleGrid {
     gap: 15px;
   }
 }
 
+@media (max-width: 650px) {
+  .saleHeader {
+    gap: 15px;
+  }
+
+  .saleGrid {
+    margin-bottom: 50px;
+  }
+}
+
 @media (max-width: 483px) {
-  .salesGrid {
+      .headerLiner {
+    display: none;
+  }
+  .saleHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .saleGrid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .image {
-    height: 240px;
+  .card {
+    border: 1px solid lightgray;
   }
+
+  /* .image {
+    height: 240px;
+  } */
 }
 
 @media (max-width: 420px) {
-  .title {
+  .titleSale {
     font-size: 32px;
   }
 
