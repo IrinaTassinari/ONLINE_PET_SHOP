@@ -1,19 +1,24 @@
+
 .headerRow {
-  margin-top: 24px;
-  margin-bottom: 32px;
-  display: grid;
-  grid-template-columns: 1fr auto;
+  margin-bottom: 40px;
+  display: flex;
   align-items: center;
-  gap: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 18px;
+ gap: 20px;
+}
+.line{
+   border-bottom: 1px solid #ddd; 
+   max-width: 1067px;
+   flex: 1;               
+  height: 1px;
+  background: #ddd; 
 }
 
 .title {
   font-weight: 700;
   font-size: 64px;
-  line-height: 1.05;
+  line-height: 110%;
   color: #282828;
+  margin-bottom: 0;
 }
 
 .backBtn {
@@ -40,19 +45,38 @@
 }
 
 .empty {
-  margin: 80px 0;
-  text-align: center;
+  margin-top: 60px;
   color: #282828;
-  font-size: 30px;
+  font-weight: 500;
+font-size: 20px;
+line-height: 130%;
 }
 
 .shopLink {
   display: inline-block;
-  margin-top: 16px;
-  color: #0d50ff;
+  margin-top: 32px;
+  background-color: #0d50ff;
   text-decoration: none;
-  font-size: 22px;
   font-weight: 600;
+font-size: 20px;
+line-height: 130%;
+text-align: center;
+color: #fff;
+border: none;
+border-radius: 6px;
+padding: 16px 56px;
+transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.shopLink:hover {
+  background-color: #282828;
+  color: #fff;
+}
+@media (max-width: 1350px) {
+  .layout {
+    grid-template-columns: 1fr 460px; /* было шире, делаем уже */
+    gap: 24px;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -60,8 +84,7 @@
     grid-template-columns: 1fr;
   }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 825px) {
   .title {
     font-size: 44px;
   }
@@ -69,4 +92,15 @@
   .backBtn {
     font-size: 16px;
   }
+}
+@media (max-width: 642px) {
+.headerRow{
+  flex-direction: column;
+  align-items: flex-start;
+}
+}
+@media (max-width: 412px) {
+.shopLink{
+  padding: 16px 36px;
+}
 }

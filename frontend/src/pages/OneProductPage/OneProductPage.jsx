@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Breadcrumbs from "../../components/layout/Breadcrumbs/Breadcrumbs";
@@ -17,7 +17,7 @@ function OneProductPage() {
   const [isExpanded, setIsExpanded] = useState(false); //Управляет описанием: свернуто или раскрыто (Read more / Hide).
   const [quantity, setQuantity] = useState(1); // кол-во изначально 1 на товаре
   const [isAdded, setIsAdded] = useState(false); // button Add To Cart
-  const [addedTimer, setAddedTimer] = useState(null);
+  const addedTimerRef = useRef(null);
 
   const fullDescription = product?.description || "";
   const PREVIEW_LIMIT = 280;
@@ -53,25 +53,27 @@ function OneProductPage() {
       - Без этого в корзину уйдёт товар с дефолтным количеством (обычно 1).
    */
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }));
-    setIsAdded(true);
+  dispatch(addToCart({ ...product, quantity }));
+  setIsAdded(true);
 
-    if (addedTimer) clearTimeout(addedTimer); //Если старый таймер был, отменяет его
+  if (addedTimerRef.current) {
+    clearTimeout(addedTimerRef.current);
+  }
 
-    //Ставит новый таймер на 2 секунды
-    const timerId = setTimeout(() => {
-      setIsAdded(false);
-    }, 2000);
+  addedTimerRef.current = setTimeout(() => {
+    setIsAdded(false);
+    addedTimerRef.current = null;
+  }, 2000);
+};
 
-    setAddedTimer(timerId); //Сохраняет его id в state
+  //При размонтировании компонента  очищает таймер, чтобы не было утечек и попыток обновить state после ухода со страницы
+ useEffect(() => {
+  return () => {
+    if (addedTimerRef.current) {
+      clearTimeout(addedTimerRef.current);
+    }
   };
-
-  //При размонтировании компонента (или смене addedTimer) очищает таймер, чтобы не было утечек и попыток обновить state после ухода со страницы
-  useEffect(() => {
-    return () => {
-      if (addedTimer) clearTimeout(addedTimer);
-    };
-  }, [addedTimer]);
+}, []);
 
   useEffect(() => {
     const loadProduct = async () => {

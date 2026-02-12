@@ -11,10 +11,11 @@ function ShoppingCartPage() {
 
   return (
     <section className="container">
-      <Breadcrumbs />
+      <Breadcrumbs/>
 
       <div className={style.headerRow}>
         <h1 className={style.title}>Shopping cart</h1>
+        <span className={style.line}></span>
         <Link to="/" className={style.backBtn}>
           Back to the store
         </Link>
