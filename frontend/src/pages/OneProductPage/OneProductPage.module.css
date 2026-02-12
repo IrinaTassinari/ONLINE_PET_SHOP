@@ -1,0 +1,135 @@
+.wrapper {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+  gap: 32px;
+  align-items: start;
+  padding: 0 10px;
+}
+
+
+.image {
+  width: 100%;
+  max-height: 572px;
+  object-fit: contain;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.image {
+  width: 100%;
+  height: clamp(360px, 48vw, 620px);
+  object-fit: contain;      
+  object-position: center;
+  display: block;
+  background: #f6f7f9;      /* чтобы пустоты выглядели аккуратно */
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 20px;            
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 0.03em;
+  color: #282828;
+  margin-bottom: 32px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.newPrice {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 110%;
+  color: #282828;
+}
+
+.oldPrice {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 130%;
+  color: #8b8b8b;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+.badgeSale {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #0d50ff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+letter-spacing: 0.03em;
+margin-bottom: 40px;
+}
+
+
+.descTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  color: #282828;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #282828;
+overflow-wrap: anywhere; /* чтобы длинные слова/строки не вылезали */
+  word-break: break-word;
+}
+
+.readMoreBtn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #282828;
+  margin-top: 37px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: fit-content;
+}
+
+@media (max-width: 1286px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+    .image {
+    height: clamp(320px, 62vw, 520px);
+  }
+}
+
+@media (max-width: 768px) {
+  .newPrice {
+    font-size: 48px;
+  }
+
+  .oldPrice {
+    font-size: 30px;
+  }
+}
