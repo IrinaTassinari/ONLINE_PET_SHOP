@@ -7,27 +7,14 @@
   padding: 0 10px;
 }
 
-
 .image {
   width: 100%;
-  max-height: 572px;
+  height: clamp(360px, 48vw, 540px);
   object-fit: contain;
-  display: block;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-}
-
-.image {
-  width: 100%;
-  height: clamp(360px, 48vw, 620px);
-  object-fit: contain;      
   object-position: center;
   display: block;
-  background: #f6f7f9;      /* чтобы пустоты выглядели аккуратно */
-  border: 1px solid #e5e5e5;
   border-radius: 14px;
-  padding: 20px;            
+  padding: 20px;
 }
 
 .info {
@@ -74,10 +61,94 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 130%;
-letter-spacing: 0.03em;
-margin-bottom: 40px;
+  letter-spacing: 0.03em;
+  margin-bottom: 40px;
+}
+.cartRow {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.qtyBox {
+  display: grid;
+  grid-template-columns: 58px 96px 58px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 58px;
 }
 
+.qtyBtn,
+.qtyValue {
+  display: grid;
+  place-items: center;
+}
+
+.qtyBtn {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-size: 32px;
+  color: #8b8b8b;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.qtyBtn:hover {
+  background-color: #f3f3f3;
+  color: #6f6f6f;
+}
+.qtyValue {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  text-align: center;
+  color: #282828;
+}
+
+.addToCartBtn {
+  text-align: center;
+  width: 100%;
+  max-width: 316px;
+  /* height: 58px; */
+  border: none;
+  border-radius: 6px;
+  background: #0d50ff;
+  color: #fff;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.addToCartBtn:hover {
+  background-color: #282828;
+  color: #fff;
+}
+.addedBtn {
+  border: 1px solid #282828;
+  background-color: #fff;
+  width: 100%;
+  max-width: 316px;
+  border-radius: 6px;
+  color: #282828;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  text-align: center;
+  cursor: pointer;
+}
+.addedBtn:hover {
+  background-color: #fff;
+  color: #282828;
+}
 
 .descTitle {
   font-weight: 600;
@@ -92,7 +163,7 @@ margin-bottom: 40px;
   font-size: 16px;
   line-height: 130%;
   color: #282828;
-overflow-wrap: anywhere; /* чтобы длинные слова/строки не вылезали */
+  overflow-wrap: anywhere; /* чтобы длинные слова/строки не вылезали */
   word-break: break-word;
 }
 
@@ -110,8 +181,18 @@ overflow-wrap: anywhere; /* чтобы длинные слова/строки н
   cursor: pointer;
   width: fit-content;
 }
+@media (max-width: 1440px) {
+  .cartRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
 @media (max-width: 1286px) {
+  .cartRow {
+    display: flex;
+    align-items: flex-start;
+  }
   .wrapper {
     grid-template-columns: 1fr;
   }
@@ -119,12 +200,20 @@ overflow-wrap: anywhere; /* чтобы длинные слова/строки н
   .title {
     font-size: 32px;
   }
-    .image {
+  .image {
     height: clamp(320px, 62vw, 520px);
   }
 }
 
 @media (max-width: 768px) {
+  .cartRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .addToCartBtn {
+    max-width: 650px;
+  }
+
   .newPrice {
     font-size: 48px;
   }

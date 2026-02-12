@@ -2,20 +2,19 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../../features/categories/categoriesThunks";
-import style from './CategoriesComp.module.css'
+import style from "./CategoriesComp.module.css";
 
 const API_URL = "http://localhost:3333";
 
 function CategoriesComp() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store
 
   // Берем из store:
   // list — массив категорий.
-  // listStatus — статус загрузки (idle/loading/succeeded/failed).
-
+  // listStatus — статус загрузки (idle/loading/succeeded/failed)
   const { list, listStatus } = useSelector((state) => state.categories);
 
-  const productsFour = list.slice(0,4)
+  const productsFour = list.slice(0, 4);
 
   //При первом рендере, если статус idle, вызывается dispatch(fetchCategories())
   //Это делает запрос на /categories/all через thunk
@@ -28,7 +27,9 @@ function CategoriesComp() {
       <div className={style.categoriesHeader}>
         <h2 className={style.titleCategories}>Categories</h2>
         <span className={style.headerLine}></span>
-        <Link className={style.linkToAllCateg} to="/categories">All categories</Link>
+        <Link className={style.linkToAllCateg} to="/categories">
+          All categories
+        </Link>
       </div>
 
       {listStatus === "loading" && <p>Loading...</p>}
@@ -36,8 +37,7 @@ function CategoriesComp() {
         <p>{listError || "Error loading categories"}</p>
       )}
 
-
-{listStatus === "succeeded" && (
+      {listStatus === "succeeded" && (
         <div className={style.categoriesList}>
           {productsFour.map((category) => (
             <Link

@@ -49,7 +49,7 @@
 }
 
 .card {
-    text-decoration: none;
+  text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
@@ -150,7 +150,7 @@
 }
 
 @media (max-width: 483px) {
-      .headerLiner {
+  .headerLiner {
     display: none;
   }
   .saleHeader {

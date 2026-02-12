@@ -2,7 +2,6 @@ import style from './Contacts.module.css'
 import instagramIcon from '../../../assets/icons/instagram-icon.svg'
 import whatsAppIcon from '../../../assets/icons/whatsapp-icon.svg'
 
-
 function Contacts(){
     return(
         <section className={style.contactsBox}>

@@ -28,7 +28,7 @@ export function getCurrentPrice(product) {
  * 
  * настройки фильтра:
     priceFrom, priceTo — границы цены
-    discountedOnly — показывать только скидочные
+    discountedOnly — показывать только скидочные   Это фильтр от пользователя (чекбокс “Discounted items”)
     salesOnly — тоже принудительно только скидочные (для страницы AllSalesPage)
     sortBy — тип сортировки
  */

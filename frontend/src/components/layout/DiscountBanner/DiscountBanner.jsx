@@ -2,7 +2,6 @@ import DiscountImage from '../../../assets/images/discount-image.svg'
 import FormAntd from '../FormAntd/FormAntd'
 import style from './DiscountBanner.module.css'
 
-
 function DiscountBanner(){
     return(
         <section className='container'>

@@ -1,0 +1,92 @@
+.panel {
+  background: #f1f3f4;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 110%;
+  color: #282828;
+  margin-bottom: 24px;
+}
+
+.items {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 130%;
+  color: #8b8b8b;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+
+.totalLabel {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 130%;
+  color: #8b8b8b;
+}
+
+.totalValue {
+  font-weight: 700;
+  font-size: 64px;
+  color: #282828;
+  line-height: 110%;
+}
+
+.form :global(.ant-form-item) {
+  margin-bottom: 14px;
+}
+
+
+.inputOrd {
+  
+ 
+  background: #fff;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 130%;
+  border: 1px solid #ddd;
+border-radius: 6px;
+padding: 16px 32px;
+}
+
+.inputOrd::placeholder {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+ color: #8b8b8b;
+}
+
+.inputOrd:hover,
+.inputOrd:focus {
+  box-shadow: none;
+}
+
+.orderBtn {
+  padding: 16px 32px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #0d50ff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.orderBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

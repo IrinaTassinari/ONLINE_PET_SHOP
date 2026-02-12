@@ -1,22 +1,19 @@
-import './App.css'
-import Header from './components/layout/Header/Header'
-import AppRoutes from './AppRoutes'
-import Footer from './components/layout/Footer/Footer'
-import ScrollToTopButton from './components/ui/ScrollToTopButton/ScrollToTopButton'
-import ScrollToTop from './utils/ScrollToTop'
-
+import "./App.css";
+import Header from "./components/layout/Header/Header";
+import AppRoutes from "./AppRoutes";
+import Footer from "./components/layout/Footer/Footer";
+import ScrollToTopButton from "./components/ui/ScrollToTopButton/ScrollToTopButton";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
-
   return (
-    <>
-    <Header/>
-    <ScrollToTop/>
-      <AppRoutes/>
-    <Footer/>
-    <ScrollToTopButton/>
-    </>
-  )
+    <div className="app">
+      <Header />
+      <ScrollToTop />
+      <AppRoutes />
+      <Footer />
+      <ScrollToTopButton />
+    </div>
+  );
 }
-
-export default App
+export default App;

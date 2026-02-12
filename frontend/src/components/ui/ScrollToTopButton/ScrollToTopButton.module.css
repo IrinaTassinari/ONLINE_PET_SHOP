@@ -22,15 +22,15 @@
 }
 
 .show {
-    /* делает кнопку полностью видимой */
+  /* делает кнопку полностью видимой */
   opacity: 1;  
   transform: translateY(0);
 
-   /* включает клики по кнопке */
+  /* включает клики по кнопке */
   pointer-events: auto;
 }
+
 .btn:hover{
-  
   background-color:  rgba(13, 80, 255, 0.4);
   /* outline-offset: 2px; */
 }

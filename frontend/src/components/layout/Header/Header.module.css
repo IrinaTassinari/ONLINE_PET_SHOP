@@ -103,12 +103,11 @@
 }
 
 @media (max-width: 450px) {
-  .logoMobile img,
   .cartMobile img {
     height: 35px;
   }
-  .burgerLine {
-    width: 18px;
+  .logoMobile img{
+    width: 45px;
   }
   .mobileMenu {
     top: calc(var(--header-height, 100px) + 5px);

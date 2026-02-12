@@ -29,7 +29,7 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {
-        // fetchTodos.pending - объект действия = action
+        // fetchCategories.pending - объект действия = action
         // pending вызывается автоматически, когда fetchTodos только отправлен. Это проиходит сразу после dispatch(fetchTodos())
         state.listStatus = "loading";
         state.listError = null;
@@ -49,12 +49,20 @@ const categoriesSlice = createSlice({
       })
       .addCase(fetchCategoryById.fulfilled, (state, action) => {
         state.currentStatus = "succeeded";
+
+        // backend для /categories/:id возвращает объект вида
+        //{
+        //  category: {...},
+        //  data: [...]
+        //    }            и этот код раскладывает его в state.current и state.currentProducts
         state.current =
           action.payload && action.payload.category
-            ? action.payload.category
-            : null;
+            ? action.payload.category //Берёт саму категорию из ответа (payload.category)
+            : null;   //Если вдруг данных нет, ставит null
         state.currentProducts =
-          action.payload && action.payload.data ? action.payload.data : [];
+          action.payload && action.payload.data 
+            ? action.payload.data  //Берёт товары этой категории из ответа (payload.data)
+            : []; //Если нет данных, ставит пустой массив []
       })
 
       .addCase(fetchCategoryById.rejected, (state, action) => {

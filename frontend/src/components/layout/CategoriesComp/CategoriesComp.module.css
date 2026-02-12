@@ -52,7 +52,9 @@
   text-decoration: none;
   border-radius: 12px;
   padding: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .categoryCard img {
@@ -86,16 +88,15 @@
   .titleCategories {
     font-size: 44px;
   }
-     .categoriesList {
+  .categoriesList {
     gap: 15px;
   }
-
 }
 @media (max-width: 650px) {
   .categoriesHeader {
     gap: 15px;
   }
-  .categoriesList{
+  .categoriesList {
     margin-bottom: 50px;
   }
 }
@@ -103,18 +104,18 @@
   .headerLiner {
     display: none;
   }
-   .categoriesHeader {
+  .categoriesHeader {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
     margin-bottom: 20px;
   }
 
-    .categoriesList {
+  .categoriesList {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  .categoryCard{
+  .categoryCard {
     border: 1px solid lightgray;
   }
 }

@@ -15,7 +15,6 @@
   height: auto;
 }
 
-
 .titleNotFound {
   /* font-size: 64px; */
   font-size: clamp(32px, 5vw, 64px);
@@ -53,14 +52,14 @@
   opacity: 0.9;
 }
 
-@media(max-width: 850px){
-   .homeBtn {
+@media (max-width: 850px) {
+  .homeBtn {
     font-size: 16px;
     padding: 16px 56px;
   }
 }
-@media(max-width: 480px){
-   .wrapperNotFound {
+@media (max-width: 480px) {
+  .wrapperNotFound {
     padding: 0 50px;
   }
 }

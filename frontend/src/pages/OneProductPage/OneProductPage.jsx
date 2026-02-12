@@ -4,6 +4,8 @@ import axios from "axios";
 import Breadcrumbs from "../../components/layout/Breadcrumbs/Breadcrumbs";
 import { hasDiscount } from "../../utils/productFilters";
 import style from "./OneProductPage.module.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/shoppingCart/shoppingCartSlice";
 
 const API_URL = "http://localhost:3333";
 
@@ -13,10 +15,15 @@ function OneProductPage() {
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [quantity, setQuantity] = useState(1); // кол-во изначально 1 на товаре
+  const [isAdded, setIsAdded] = useState(false); // button Add To Cart
+  const [addedTimer, setAddedTimer] = useState(null);
 
   const fullDescription = product?.description || "";
   const PREVIEW_LIMIT = 280;
   const isLongText = fullDescription.length > PREVIEW_LIMIT;
+
+  const dispatch = useDispatch();
 
   /**
  * Логика:
@@ -31,6 +38,41 @@ function OneProductPage() {
     isExpanded || !isLongText
       ? fullDescription
       : `${fullDescription.slice(0, PREVIEW_LIMIT)}...`;
+
+  useEffect(() => {
+    setQuantity(1);
+    setIsExpanded(false);
+    setIsAdded(false);
+  }, [id]);
+
+  /**
+   * Что делает:
+      - берёт все поля товара (...product),
+      - добавляет текущее выбранное количество quantity,
+      - отправляет в shoppingCartSlice.
+      - Без этого в корзину уйдёт товар с дефолтным количеством (обычно 1).
+   */
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity }));
+    setIsAdded(true);
+
+    if (addedTimer) clearTimeout(addedTimer); //Если старый таймер был, отменяет его
+
+    //Ставит новый таймер на 2 секунды
+    const timerId = setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+
+    setAddedTimer(timerId); //Сохраняет его id в state
+  };
+
+  //При размонтировании компонента (или смене addedTimer) очищает таймер, чтобы не было утечек и попыток обновить state после ухода со страницы
+  useEffect(() => {
+    return () => {
+      if (addedTimer) clearTimeout(addedTimer);
+    };
+  }, [addedTimer]);
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -87,11 +129,11 @@ function OneProductPage() {
   if (!product) return null;
 
   const discounted = hasDiscount(product);
- const discountPercent = discounted
-  ? Math.round(((product.price - product.discont_price) / product.price) * 100)
-  : 0;
-
-
+  const discountPercent = discounted
+    ? Math.round(
+        ((product.price - product.discont_price) / product.price) * 100,
+      )
+    : 0;
 
   return (
     <section className="container">
@@ -120,6 +162,36 @@ function OneProductPage() {
             ) : (
               <span className={style.newPrice}>${product.price}</span>
             )}
+          </div>
+
+          <div className={style.cartRow}>
+            <div className={style.qtyBox}>
+              <button
+                type="button"
+                className={style.qtyBtn}
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              >
+                −
+              </button>
+
+              <span className={style.qtyValue}>{quantity}</span>
+
+              <button
+                type="button"
+                className={style.qtyBtn}
+                onClick={() => setQuantity((prev) => prev + 1)}
+              >
+                +
+              </button>
+            </div>
+
+            <button
+              type="button"
+              className={`${style.addToCartBtn} ${isAdded ? style.addedBtn : ""}`}
+              onClick={handleAddToCart}
+            >
+              {isAdded ? "Added" : "Add to cart"}
+            </button>
           </div>
 
           <h3 className={style.descTitle}>Description</h3>

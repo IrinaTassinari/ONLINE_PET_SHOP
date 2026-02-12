@@ -25,3 +25,17 @@ export const fetchSales = createAsyncThunk(
     }
   }
 );
+
+// отправляет POST 
+export const sendSaleCoupon = createAsyncThunk(
+  "sales/sendCoupon",
+  async (payload) => {
+    try {
+      const response = await axios.post(`${API_URL}/sale/send`, payload);
+      return response.data;
+    } catch (error) {
+      console.error("There was an error sending coupon request!", error);
+      throw error;
+    }
+  }
+);

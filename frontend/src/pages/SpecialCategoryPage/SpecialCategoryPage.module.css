@@ -1,5 +1,5 @@
 .title {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
   font-weight: 700;
   font-size: 64px;
   line-height: 110%;
@@ -86,7 +86,6 @@
   border-right: 0;
   transform: rotate(-45deg);
 }
-
 
 .select {
   appearance: none;
@@ -209,10 +208,70 @@
   text-decoration: line-through;
 }
 
+.imageWrap {
+  position: relative;
+}
+
+.cardAddBtn {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #0d50ff;
+  color: #fff;
+  padding: 16px 32px;
+  line-height: 130%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.card:hover .cardAddBtn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/*
+Это CSS-селектор с условием
+.cardAddBtn:not(.cardAddedBtn):hover значит:
+элемент с классом .cardAddBtn
+который не имеет класса .cardAddedBtn
+и на который навели мышь (:hover)
+То есть hover-стиль применяется только для обычной кнопки Add to cart, но не для состояния Added.
+*/
+.cardAddBtn:not(.cardAddedBtn):hover {
+  background: #282828;
+  color: #fff;
+}
+
+.cardAddedBtn {
+  background: #fff;
+  color: #282828;
+  border: 1px solid #282828;
+}
+
+.cardAddedBtn:hover {
+  background: #fff;
+  color: #282828;
+}
+
 @media (max-width: 1200px) {
   .productsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-     gap: 35px;
+    gap: 35px;
   }
 }
 
@@ -227,7 +286,7 @@
 }
 
 @media (max-width: 768px) {
-   .filtersBar {
+  .filtersBar {
     gap: 16px;
     margin-bottom: 24px;
   }
@@ -237,9 +296,9 @@
     font-size: 18px;
   }
   .checkbox {
-  width: 28px;
-  height: 28px;
-}
+    width: 28px;
+    height: 28px;
+  }
 
   .sadFace {
     width: 150px;
@@ -255,6 +314,31 @@
 
   .productsGrid {
     gap: 15px;
+  }
+  .cardAddBtn {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 750px) {
+  .cardAddBtn {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .card:hover .cardAddBtn {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 660px) {
+  .cardAddBtn,
+  .cardAddedBtn {
+    padding: 8px 18px;
   }
 }
 
@@ -277,7 +361,7 @@
     font-size: 32px;
   }
 
-   .filterGroup,
+  .filterGroup,
   .inputsRow {
     gap: 8px;
   }
