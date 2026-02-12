@@ -11,7 +11,7 @@ import { addToCart } from "../../features/shoppingCart/shoppingCartSlice";
 const API_URL = "http://localhost:3333";
 
 function AllSalesPage() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store
   const { list, listStatus, listError } = useSelector((state) => state.sales);
 
   const [priceFrom, setPriceFrom] = useState("");

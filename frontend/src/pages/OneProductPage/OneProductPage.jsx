@@ -10,11 +10,11 @@ import { addToCart } from "../../features/shoppingCart/shoppingCartSlice";
 const API_URL = "http://localhost:3333";
 
 function OneProductPage() {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [status, setStatus] = useState("loading");
-  const [error, setError] = useState("");
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { id } = useParams(); //Берёт id товара из URL (/products/:id), чтобы понять какой товар грузить
+  const [product, setProduct] = useState(null); //объект товара (title, price, image, description и т.д.)
+  const [status, setStatus] = useState("loading"); //Состояние загрузки: loading, succeeded, failed
+  const [error, setError] = useState(""); //Текст ошибки, если запрос товара не удался
+  const [isExpanded, setIsExpanded] = useState(false); //Управляет описанием: свернуто или раскрыто (Read more / Hide).
   const [quantity, setQuantity] = useState(1); // кол-во изначально 1 на товаре
   const [isAdded, setIsAdded] = useState(false); // button Add To Cart
   const [addedTimer, setAddedTimer] = useState(null);
@@ -23,7 +23,7 @@ function OneProductPage() {
   const PREVIEW_LIMIT = 280;
   const isLongText = fullDescription.length > PREVIEW_LIMIT;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store
 
   /**
  * Логика:
@@ -46,13 +46,12 @@ function OneProductPage() {
   }, [id]);
 
   /**
-   * Что делает:
+   * handleAddToCart Что делает:
       - берёт все поля товара (...product),
       - добавляет текущее выбранное количество quantity,
       - отправляет в shoppingCartSlice.
       - Без этого в корзину уйдёт товар с дефолтным количеством (обычно 1).
    */
-
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
     setIsAdded(true);
@@ -88,22 +87,23 @@ function OneProductPage() {
         // 3) объект продукта (на будущее)
         if (Array.isArray(data)) {
           if (data.length === 0) {
-            setStatus("failed");
+            setStatus("failed"); //пустой массив
             setError("Product not found");
             return;
           }
-          setProduct(data[0]);
+          setProduct(data[0]); //иначе берёт data[0], кладёт в product, статус succeeded
           setStatus("succeeded");
           return;
         }
 
+        //если пришёл объект ошибки { status: "ERR" }
         if (data?.status === "ERR") {
           setStatus("failed");
           setError(data.message || "Product not found");
           return;
         }
 
-        setProduct(data);
+        setProduct(data); //иначе считает, что пришёл объект товара: кладёт в product, статус succeeded
         setStatus("succeeded");
       } catch (e) {
         setStatus("failed");
@@ -111,8 +111,8 @@ function OneProductPage() {
       }
     };
 
-    if (id) loadProduct();
-  }, [id]);
+    if (id) loadProduct(); //if (id) true -> запрос выполняется
+  }, [id]); //id приходит из URL через useParams().
 
   if (status === "loading")
     return (
@@ -134,6 +134,8 @@ function OneProductPage() {
         ((product.price - product.discont_price) / product.price) * 100,
       )
     : 0;
+  //const discountPercent = discounted ? ... : null;
+  //Если скидка есть, считает процент скидки: (price - discont_price) / price) * 100 и округляет Math.round(...)
 
   return (
     <section className="container">

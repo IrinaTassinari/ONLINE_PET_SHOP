@@ -16,8 +16,9 @@ const API_URL = "http://localhost:3333";
 
 function SpecialCategoryPage() {
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store
 
+  //из categoriesSlice.js
   const { current, currentProducts, currentStatus, currentError } = useSelector(
     (state) => state.categories,
   );
@@ -28,7 +29,14 @@ function SpecialCategoryPage() {
   const [sortBy, setSortBy] = useState(SORT_VALUES.DEFAULT);
 
   const [addedById, setAddedById] = useState({});
-  const timersRef = useRef({});
+  const timersRef = useRef({}); //это “контейнер” для хранения таймеров между рендерами, без вызова перерисовки
+/** там хранится объект таймеров по categories.id, например:
+ timersRef.current = {
+  3: 145,   // id setTimeout для товара 3
+  8: 146
+}
+ */
+
 
   const handleAddToCart = (e, product) => {
     //e.preventDefault() и e.stopPropagation()
@@ -158,6 +166,21 @@ function SpecialCategoryPage() {
             </p>
           </div>
         ) : (
+
+           /**
+           * visibleProducts.map((product) => { ... }) Проходит по отфильтрованному списку и рендерит карточку для каждого товара.
+           * Внутри для каждого product
+           * 1)const isAdded = !!addedById[product.id];
+                Проверяет, был ли нажат Add to cart у этой конкретной карточки.
+                true -> показать Added, false -> Add to cart.
+            2)const discounted = hasDiscount(product);
+                Определяет, есть ли у товара реальная скидка (discont_price < price).
+            3)const discountPercent = discounted ? ... : null;
+                Если скидка есть, считает процент скидки: (price - discont_price) / price) * 100
+                и округляет Math.round(...).
+                Если скидки нет -> null (процент не показываем).
+           */
+
           <div className={style.productsGrid}>
             {visibleProducts.map((product) => {
               const isAdded = !!addedById[product.id];
