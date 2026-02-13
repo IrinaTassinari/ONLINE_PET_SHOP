@@ -7,25 +7,33 @@ import style from "./Breadcrumbs.module.css";
 
 /**
  *Входные пропсы- productTitle и productCategoryId приходят с OneProductPage.
-    - productTitle нужен, чтобы последняя крошка была не 123, а название товара.
+    - productTitle нужен, чтобы последняя крошка была не 123, а название товара. productTitle — название товара (для /products/:id)
     - productCategoryId нужен, чтобы понять, к какой категории относится товар.
  */
 
+
+//в компоненте два return- Есть 2 режима рендера:
+//1) режим товара (/products/:id) — специальная цепочка: Main -> Categories -> <category> -> <product></product>
+//2) Все остальные страницы — универсальная логика через pathnames.map(...).
+
 function Breadcrumbs({ productTitle = "", productCategoryId = null }) {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter(Boolean);
+  const pathnames = location.pathname.split("/").filter(Boolean); //Берёт текущий путь
 
-  const categories = useSelector((state) => state.categories.list || []);
-  const currentCategory = useSelector((state) => state.categories.current);
+  const categories = useSelector((state) => state.categories.list || []); //categories.list — список категорий
+  const currentCategory = useSelector((state) => state.categories.current);//categories.current — текущая открытая категория
 
+ 
   const isProductPage = pathnames[0] === "products" && pathnames.length === 2;
   const productIdFromUrl = Number(pathnames[1]);
 
+  //Пытается найти категорию товара в общем списке categories по productCategoryId если productCategoryId не null/undefined
   const categoryFromProduct =
     productCategoryId != null
       ? categories.find((c) => c.id === Number(productCategoryId)) || null
       : null;
 
+  //Выбирает итоговую категорию, которую показывать в breadcrumbs
   const resolvedCategory =
     categoryFromProduct ||
     (productCategoryId != null &&
@@ -37,7 +45,7 @@ function Breadcrumbs({ productTitle = "", productCategoryId = null }) {
   if (isProductPage) {
     return (
       <nav className={style.breadcrumbs}>
-        <Link to="/" className={style.crumb}>Main page</Link>
+        <Link to="/" className={style.crumb}>Main page</Link> 
 
         {resolvedCategory ? (
           <>
@@ -57,12 +65,17 @@ function Breadcrumbs({ productTitle = "", productCategoryId = null }) {
     );
   }
 
+  //Это функция, которая решает, какой текст показать в каждой крошке
+  //segment — текущая часть URL ("categories", "sales", "3" и т.д.)
+// index — позиция сегмента в пути
+// вспомогательная функция - Она нужна только для универсального режима
   const getBreadcrumbName = (segment, index) => {
     if (segment === "categories") return "Categories";
     if (segment === "products") return "Products";
     if (segment === "sales") return "Sales";
     if (segment === "cart") return "Shopping cart";
 
+    //Для страницы категории /categories/:id:
     if (pathnames[0] === "categories" && index === 1) {
       if (currentCategory?.title && Number(currentCategory.id) === Number(segment)) {
         return currentCategory.title;
@@ -71,7 +84,7 @@ function Breadcrumbs({ productTitle = "", productCategoryId = null }) {
       if (category) return category.title;
     }
 
-    return segment;
+    return segment; //Если ничего не подошло - показывает исходный сегмент как есть (например число 3)
   };
 
   return (
