@@ -8,7 +8,7 @@ const sequelize = require('./database/database');
 const cors = require('cors')
 const Category = require('./database/models/category');
 const Product = require('./database/models/product');
-const PORT = 3333;
+const PORT =process.env.PORT || 3333;
 
 Category.hasMany(Product);
 

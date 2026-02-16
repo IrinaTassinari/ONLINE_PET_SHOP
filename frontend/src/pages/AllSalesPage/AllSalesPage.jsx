@@ -8,7 +8,8 @@ import { filterAndSortProducts, SORT_VALUES } from "../../utils/productFilters";
 import SadFace from "../../assets/icons/sad-face.svg";
 import { addToCart } from "../../features/shoppingCart/shoppingCartSlice";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function AllSalesPage() {
   const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store

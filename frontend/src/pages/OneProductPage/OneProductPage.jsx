@@ -7,7 +7,8 @@ import style from "./OneProductPage.module.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/shoppingCart/shoppingCartSlice";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function OneProductPage() {
   const { id } = useParams(); //Берёт id товара из URL (/products/:id), чтобы понять какой товар грузить

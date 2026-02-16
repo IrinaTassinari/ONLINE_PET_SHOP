@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // fetchProducts отправляет GET /products/all
 export const fetchProducts = createAsyncThunk(

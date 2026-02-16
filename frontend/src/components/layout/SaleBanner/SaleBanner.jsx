@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSales } from "../../../features/sales/salesThunks";
 import style from "./SaleBanner.module.css";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function SaleBanner() {
   const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store

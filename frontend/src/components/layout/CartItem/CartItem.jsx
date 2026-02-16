@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { decreaseQuantity,increaseQuantity,removeFromCart,} from "../../../features/shoppingCart/shoppingCartSlice";
 import style from "./CartItem.module.css";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function CartItem({ item }) {
   const dispatch = useDispatch();

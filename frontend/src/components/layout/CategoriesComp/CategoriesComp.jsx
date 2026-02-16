@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../../features/categories/categoriesThunks";
 import style from "./CategoriesComp.module.css";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function CategoriesComp() {
   const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store

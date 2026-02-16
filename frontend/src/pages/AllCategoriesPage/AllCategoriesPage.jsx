@@ -5,7 +5,8 @@ import { fetchCategories } from "../../features/categories/categoriesThunks";
 import style from './AllCategoriesPage.module.css'
 import Breadcrumbs from "../../components/layout/Breadcrumbs/Breadcrumbs";
 
-const API_URL = "http://localhost:3333";
+//const API_URL = "http://localhost:3333";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function AllCategoriesPage() {
   const dispatch = useDispatch(); //получает функцию dispatch из Redux, чтобы отправлять actions/thunks в store
