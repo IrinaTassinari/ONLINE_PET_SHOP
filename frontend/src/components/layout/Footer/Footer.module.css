@@ -1,11 +1,12 @@
 .footerContainer{
-    margin: 80px 0;
+   margin-top: 80px;
+  padding-bottom: 70px;
 }
 
 .mapWrapper {
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 70px;
+  margin-bottom: 0;
 }
 
 .map {
