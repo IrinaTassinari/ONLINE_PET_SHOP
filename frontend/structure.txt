@@ -1,0 +1,96 @@
+C:\frontend
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── src
+|  ├── App.css
+|  ├── App.jsx
+|  ├── AppRoutes.jsx
+|  ├── assets
+|  |  ├── fonts
+|  |  |  ├── Montserrat-Bold.ttf
+|  |  |  └── Montserrat-Medium.ttf
+|  |  ├── icons
+|  |  |  ├── empty-cart.svg
+|  |  |  ├── icon-down.svg
+|  |  |  ├── instagram-icon.svg
+|  |  |  ├── logo.svg
+|  |  |  ├── sad-face.svg
+|  |  |  └── whatsapp-icon.svg
+|  |  └── images
+|  |     ├── 404.svg
+|  |     ├── discount-image.svg
+|  |     └── main-banner.jpg
+|  ├── components
+|  |  ├── layout
+|  |  |  ├── Breadcrumbs
+|  |  |  ├── CartItem
+|  |  |  ├── CategoriesComp
+|  |  |  ├── Contacts
+|  |  |  ├── DiscountBanner
+|  |  |  ├── Footer
+|  |  |  ├── FormAntd
+|  |  |  ├── Header
+|  |  |  ├── MainBanner
+|  |  |  ├── OrderDetailsForm
+|  |  |  └── SaleBanner
+|  |  └── ui
+|  |     ├── Button
+|  |     ├── CartIcon
+|  |     └── ScrollToTopButton
+|  ├── features
+|  |  ├── categories
+|  |  |  ├── categoriesSlice.js
+|  |  |  └── categoriesThunks.js
+|  |  ├── order
+|  |  |  ├── orderSlice.js
+|  |  |  └── orderThunks.js
+|  |  ├── products
+|  |  |  ├── productsSlice.js
+|  |  |  └── productsThunks.js
+|  |  ├── sales
+|  |  |  ├── salesSlice.js
+|  |  |  └── salesThunks.js
+|  |  └── shoppingCart
+|  |     └── shoppingCartSlice.js
+|  ├── fonts.css
+|  ├── index.css
+|  ├── main.jsx
+|  ├── pages
+|  |  ├── AllCategoriesPage
+|  |  |  ├── AllCategoriesPage.jsx
+|  |  |  └── AllCategoriesPage.module.css
+|  |  ├── AllProductsPage
+|  |  |  ├── AllProductsPage.jsx
+|  |  |  └── AllProductsPage.module.css
+|  |  ├── AllSalesPage
+|  |  |  ├── AllSalesPage.jsx
+|  |  |  └── AllSalesPage.module.css
+|  |  ├── MainPage
+|  |  |  └── MainPage.jsx
+|  |  ├── NotFoundPage
+|  |  |  ├── NotFoundPage.jsx
+|  |  |  └── NotFoundPage.module.css
+|  |  ├── OneProductPage
+|  |  |  ├── OneProductPage.jsx
+|  |  |  └── OneProductPage.module.css
+|  |  ├── ShoppingCartPage
+|  |  |  ├── ShoppingCartPage.jsx
+|  |  |  └── ShoppingCartPage.module.css
+|  |  └── SpecialCategoryPage
+|  |     ├── SpecialCategoryPage.jsx
+|  |     └── SpecialCategoryPage.module.css
+|  ├── store
+|  |  └── store.js
+|  └── utils
+|     ├── productFilters.js
+|     └── ScrollToTop.js
+├── structure.txt
+├── vercel.json
+└── vite.config.js
+
+directory: 908 file: 3933
+
+
