@@ -172,18 +172,10 @@ Main endpoints:
 - `POST /sale/send` - send discount request
 - `POST /order/send` - send order request
 
-## Notes
-
-- The backend serves static files from `backend/public`.
-- The SQLite database file is stored in `backend/database.sqlite`.
-- CORS is open for all origins in the current backend configuration.
-- The project already contains `package-lock.json` files, so `npm install` is enough.
 
 ## Deployment
 
 Frontend deployment is configured for Vercel in `frontend/vercel.json`.
 Backend can be deployed as a Node.js service on Render.
 
-## Current State
 
-This repository contains the application code and local database, but no automated tests are configured yet.
